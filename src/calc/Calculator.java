@@ -116,9 +116,6 @@ public class Calculator
                             var2 = sol.pop();
                             var1 = sol.pop();
                             sol.push(var1 + var2);
-                        } else
-                        {
-                            throw new IllegalArgumentException("Error!");
                         }
                         break;
                     case "-":
@@ -127,9 +124,6 @@ public class Calculator
                             var2 = sol.pop();
                             var1 = sol.pop();
                             sol.push(var1 - var2);
-                        } else
-                        {
-                            throw new IllegalArgumentException("Error!");
                         }
                         break;
                     case "*":
@@ -138,9 +132,6 @@ public class Calculator
                             var2 = sol.pop();
                             var1 = sol.pop();
                             sol.push(var1 * var2);
-                        } else
-                        {
-                            throw new IllegalArgumentException("Error!");
                         }
                         break;
                     case "/":
@@ -149,9 +140,6 @@ public class Calculator
                             var2 = sol.pop();
                             var1 = sol.pop();
                             sol.push(var1 / var2);
-                        } else
-                        {
-                            throw new IllegalArgumentException("Error!");
                         }
                         break;
                     case "^":
@@ -160,9 +148,6 @@ public class Calculator
                             var2 = sol.pop();
                             var1 = sol.pop();
                             sol.push(Math.pow(var1, var2));
-                        } else
-                        {
-                            throw new IllegalArgumentException("Error!");
                         }
                 }
             }

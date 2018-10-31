@@ -1,28 +1,35 @@
 package calc;
 
+//import all required
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.Queue;
 
+//created main calc class, extending jframe for creation of gui
 public class Calc extends JFrame
 {
-
+    
+    //textfield for displaying output
     private JTextField numField;
 
+    //main jpanel
     private JPanel field,
             numbers,
             all;
-
+    
+    //declaration of all jbuttons
     private JButton clear, posNeg, leftp, rightp, devide,
             seven, eight, nine, mult,
             four, five, six, sub,
             one, two, three, add,
             zero, point, power, equals, yeet;
 
+    //sizing for the main window
     private final int WINDOW_WIDTH = 500,
             WINDOW_HEIGHT = 500;
 
+    //calc constructor
     public Calc()
     {
         setTitle("Slightly Less Dumb Bitch");
@@ -33,6 +40,7 @@ public class Calc extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    //builds the calculator gui
     private void buildPanel()
     {
         numField = new JTextField(10);
@@ -142,6 +150,8 @@ public class Calc extends JFrame
         all.add(numbers, BorderLayout.CENTER);
     }
 
+    //equals button listener, calls equals method in calculator
+    //this then completed the formating and calculations
     private class equalsButtonListener implements ActionListener
     {
 
@@ -160,6 +170,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds left parenthasis to the text box
     private class leftpButtonListener implements ActionListener
     {
 
@@ -169,6 +180,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds right parenthasis to the text box
     private class rightpButtonListener implements ActionListener
     {
 
@@ -178,6 +190,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds power symbol to text box
     private class powerButtonListener implements ActionListener
     {
 
@@ -193,6 +206,7 @@ public class Calc extends JFrame
         }
     }
 
+    //clears text box
     private class clearButtonListener implements ActionListener
     {
 
@@ -202,6 +216,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds sub sign to text box
     private class subButtonListener implements ActionListener
     {
 
@@ -217,6 +232,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds plus sign to text box
     private class addButtonListener implements ActionListener
     {
 
@@ -232,6 +248,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds devide sigh to text box
     private class devideButtonListener implements ActionListener
     {
 
@@ -247,6 +264,7 @@ public class Calc extends JFrame
         }
     }
 
+    //adds multiply button to text box
     private class multButtonListener implements ActionListener
     {
 
@@ -262,6 +280,9 @@ public class Calc extends JFrame
         }
     }
 
+    //this button adds a negative symbol prior to the most recent number
+    //it checks for symbols and only places neg sign on most recent number
+    //if a number was the last thing typed
     private class posNegButtonListener implements ActionListener
     {
 
@@ -311,6 +332,8 @@ public class Calc extends JFrame
         }
     }
 
+    //adds decimal symbol, if number is not the last typed thing
+    //adds 0. to keep with formating for doubles
     private class pointButtonListener implements ActionListener
     {
 
@@ -330,6 +353,7 @@ public class Calc extends JFrame
         }
     }
 
+    //all following buttons add their corrosponding number
     private class zeroButtonListener implements ActionListener
     {
 
@@ -480,6 +504,7 @@ public class Calc extends JFrame
         }
     }
 
+    //deletes the most recent typed item
     private class yeetButtonListener implements ActionListener
     {
 
