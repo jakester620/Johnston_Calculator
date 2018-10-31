@@ -8,7 +8,8 @@ import java.util.Stack;
 
 public class Calculator
 {
-
+    
+    //Check for to see if string is number
     static boolean isNumber(String str)
     {
         try
@@ -20,7 +21,9 @@ public class Calculator
             return false;
         }
     }
-
+    
+    //cleans up the users input removing unneccessary characters
+    //it then splits on spaces in preperation for sorting into RPN
     public static String[] cleanInput(String input)
     {
         String output = input;
@@ -34,6 +37,10 @@ public class Calculator
         return output.split(" ");
     }
 
+    //puts the input into RPN and seperates the operands and numbers
+    //creates a stack of operations and a queue to store the current solution
+    //after moving through each item in the text box it will place the
+    //operands in the queue in order of pirority in preperation for calculation
     public static Queue<String> rPN(String[] sep)
     {
         Map<String, Integer> prio = new HashMap<>();
@@ -90,6 +97,9 @@ public class Calculator
         return solution;
     }
 
+    //calculates the now properlly formated equation,
+    //works through the queue and applies the operands to the numbers in correct
+    //order. returns the solution in form of a double
     public static double solve(Queue<String> input)
     {
         Stack<Double> sol = new Stack<>();
@@ -162,6 +172,10 @@ public class Calculator
         return -1;
     }
 
+    //this method is directly called from the calc class when equals is pressed
+    //the method calls the above methods in correct order in order to 
+    //calculate the equaton in the text box
+    //returns string to be printed in text box on calculator
     public static String equals(String input)
     {
         String[] formated;
@@ -171,12 +185,7 @@ public class Calculator
         double calculated = solve(organized);
         return Double.toString(calculated);
     }
-
-    /**
-     *
-     * @param str
-     * @return
-     */
+    
     public static Double calculate(String str)
     {
         return solve(rPN(cleanInput(str)));
