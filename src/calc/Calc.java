@@ -9,7 +9,7 @@ import java.util.Queue;
 //created main calc class, extending jframe for creation of gui
 public class Calc extends JFrame
 {
-    
+
     //textfield for displaying output
     private JTextField numField;
 
@@ -17,13 +17,13 @@ public class Calc extends JFrame
     private JPanel field,
             numbers,
             all;
-    
+
     //declaration of all jbuttons
     private JButton clear, posNeg, leftp, rightp, devide,
             seven, eight, nine, mult,
             four, five, six, sub,
             one, two, three, add,
-            zero, point, power, equals, yeet;
+            zero, point, power, equals, delete;
 
     //sizing for the main window
     private final int WINDOW_WIDTH = 500,
@@ -32,7 +32,7 @@ public class Calc extends JFrame
     //calc constructor
     public Calc()
     {
-        setTitle("Slightly Less Dumb Bitch");
+        setTitle("CALCULATOR");
         buildPanel();
         add(all);
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -113,8 +113,8 @@ public class Calc extends JFrame
         power = new JButton("^");
         power.addActionListener(new powerButtonListener());
 
-        yeet = new JButton("DEL");
-        yeet.addActionListener(new yeetButtonListener());
+        delete = new JButton("DEL");
+        delete.addActionListener(new deleteButtonListener());
 
         field = new JPanel();
         field.add(numField);
@@ -142,7 +142,7 @@ public class Calc extends JFrame
         numbers.add(posNeg);
         numbers.add(zero);
         numbers.add(point);
-        numbers.add(yeet);
+        numbers.add(delete);
 
         all = new JPanel();
         all.setLayout(new BorderLayout());
@@ -505,7 +505,7 @@ public class Calc extends JFrame
     }
 
     //deletes the most recent typed item
-    private class yeetButtonListener implements ActionListener
+    private class deleteButtonListener implements ActionListener
     {
 
         public void actionPerformed(ActionEvent e)

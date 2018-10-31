@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class Calculator
 {
-    
+
     //Check for to see if string is number
     static boolean isNumber(String str)
     {
@@ -21,7 +21,7 @@ public class Calculator
             return false;
         }
     }
-    
+
     //cleans up the users input removing unneccessary characters
     //it then splits on spaces in preperation for sorting into RPN
     public static String[] cleanInput(String input)
@@ -102,10 +102,10 @@ public class Calculator
     //order. returns the solution in form of a string
     public static String solve(Queue<String> input)
     {
-        Stack<Double> sol = new Stack<>();
+        Stack<Double> solution = new Stack<>();
 
-        double var1;
-        double var2;
+        double temp1;
+        double temp2;
 
         while (!input.isEmpty())
         {
@@ -113,7 +113,7 @@ public class Calculator
 
             if (isNumber(value))
             {
-                sol.push(Double.valueOf(value));
+                solution.push(Double.valueOf(value));
             } else
             {
 
@@ -121,52 +121,52 @@ public class Calculator
                 {
                     case "+":
 
-                        if (sol.size() >= 2)
+                        if (solution.size() >= 2)
                         {
-                            var2 = sol.pop();
-                            var1 = sol.pop();
-                            sol.push(var1 + var2);
+                            temp2 = solution.pop();
+                            temp1 = solution.pop();
+                            solution.push(temp1 + temp2);
                         }
                         break;
                     case "-":
-                        if (sol.size() >= 2)
+                        if (solution.size() >= 2)
                         {
-                            var2 = sol.pop();
-                            var1 = sol.pop();
-                            sol.push(var1 - var2);
+                            temp2 = solution.pop();
+                            temp1 = solution.pop();
+                            solution.push(temp1 - temp2);
                         }
                         break;
                     case "*":
-                        if (sol.size() >= 2)
+                        if (solution.size() >= 2)
                         {
-                            var2 = sol.pop();
-                            var1 = sol.pop();
-                            sol.push(var1 * var2);
+                            temp2 = solution.pop();
+                            temp1 = solution.pop();
+                            solution.push(temp1 * temp2);
                         }
                         break;
                     case "/":
-                        if (sol.size() >= 2)
+                        if (solution.size() >= 2)
                         {
-                            var2 = sol.pop();
-                            var1 = sol.pop();
-                            sol.push(var1 / var2);
+                            temp2 = solution.pop();
+                            temp1 = solution.pop();
+                            solution.push(temp1 / temp2);
                         }
                         break;
                     case "^":
-                        if (sol.size() >= 2)
+                        if (solution.size() >= 2)
                         {
-                            var2 = sol.pop();
-                            var1 = sol.pop();
-                            sol.push(Math.pow(var1, var2));
+                            temp2 = solution.pop();
+                            temp1 = solution.pop();
+                            solution.push(Math.pow(temp1, temp2));
                         }
                 }
             }
 
         }
 
-        if (sol.size() == 1)
+        if (solution.size() == 1)
         {
-            return Double.toString(sol.pop());
+            return Double.toString(solution.pop());
         }
 
         return "Syntax error";
@@ -178,10 +178,6 @@ public class Calculator
     //returns string to be printed in text box on calculator
     public static String equals(String input)
     {
-        String[] formated;
-        Queue organized;
-        formated = cleanInput(input);
-        organized = rPN(formated);
-        return solve(organized);
+        return solve(rPN(cleanInput(input)));
     }
 }
