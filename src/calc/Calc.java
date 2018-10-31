@@ -1,6 +1,6 @@
 package calc;
 
-//import all required
+//required imports
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
