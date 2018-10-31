@@ -99,8 +99,8 @@ public class Calculator
 
     //calculates the now properlly formated equation,
     //works through the queue and applies the operands to the numbers in correct
-    //order. returns the solution in form of a double
-    public static double solve(Queue<String> input)
+    //order. returns the solution in form of a string
+    public static String solve(Queue<String> input)
     {
         Stack<Double> sol = new Stack<>();
 
@@ -166,10 +166,10 @@ public class Calculator
 
         if (sol.size() == 1)
         {
-            return sol.pop();
+            return Double.toString(sol.pop());
         }
 
-        return -1;
+        return "Syntax error";
     }
 
     //this method is directly called from the calc class when equals is pressed
@@ -182,12 +182,6 @@ public class Calculator
         Queue organized;
         formated = cleanInput(input);
         organized = rPN(formated);
-        double calculated = solve(organized);
-        return Double.toString(calculated);
-    }
-    
-    public static Double calculate(String str)
-    {
-        return solve(rPN(cleanInput(str)));
+        return solve(organized);
     }
 }
